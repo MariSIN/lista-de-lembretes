@@ -38,7 +38,7 @@ docker container run --name todolist -e MYSQL_ROOT_PASSWORD=desafiodti -d -p 330
       frontend
     </summary>
 
-  ### Deve-se estar na pasta frontend (/app/frontend).  
+  ### Deve-se estar na pasta app de frontend (/app/frontend/app).  
    
 1. Primeiramente deve-se instalar as dependências no terminal.
  ```js
