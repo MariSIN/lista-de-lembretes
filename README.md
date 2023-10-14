@@ -38,7 +38,7 @@ docker container run --name todolist -e MYSQL_ROOT_PASSWORD=desafiodti -d -p 330
       frontend
     </summary>
 
-  ### Deve-se estar na pasta app de frontend (/app/frontend/app).  
+  ### Deve-se estar na pasta app de frontend (/app/frontend/reminders).  
    
 1. Primeiramente deve-se instalar as dependências no terminal.
  ```js
@@ -48,7 +48,6 @@ docker container run --name todolist -e MYSQL_ROOT_PASSWORD=desafiodti -d -p 330
   ```js
   npm run dev
   ```
-* A aplicação irá rodar na porta http://localhost:3000
 </details>
  
 </details>
