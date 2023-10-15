@@ -7,16 +7,19 @@ function ContextProvider({ children }) {
 		name: '',
 		date: '',
 	});
-  const [reminder, setReminder] = useState({})
+  const [reminder, setReminder] = useState({});
+  const [allReminders, setAllReminders] = useState([]);
 
 	const value = useMemo(
 		() => ({
 			nameDate,
 			setDateName,
       reminder,
-      setReminder
+      setReminder,
+      allReminders,
+      setAllReminders
 		}),
-		[nameDate, reminder],
+		[nameDate, reminder, allReminders],
 	);
 
 	return <Context.Provider value={value}>{children}</Context.Provider>;

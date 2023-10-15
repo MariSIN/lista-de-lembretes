@@ -4,6 +4,7 @@ import postAxios from '../../services/postAxios';
 
 export default function ButtonPostReminder() {
 	const { nameDate, setDateName } = useContext(Context);
+	const { allReminders, setAllReminders } = useContext(Context);
 
 	const createReminder = async () => {
 		const dataRegex =
@@ -15,18 +16,20 @@ export default function ButtonPostReminder() {
 
 		try {
 			const reminder = await postAxios('/reminders', nameDate);
-			console.log(reminder);
 
 			if (reminder.status === 400) {
-				('Erro: Dados em formato errado.');
-			}
+				alert('O lembrete deve ser uma data futura');
+			} else {
+                setDateName({
+                    name: '',
+                    date: '',
+                });
+    
+                setAllReminders([...allReminders, reminder]);
+                
+                return reminder;
+            }
 
-			setDateName({
-				name: '',
-				date: '',
-			});
-
-			return reminder;
 		} catch (error) {
 			console.error('Erro ao enviar dados:', error.message);
 		}
