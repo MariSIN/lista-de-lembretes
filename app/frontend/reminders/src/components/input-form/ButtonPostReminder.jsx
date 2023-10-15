@@ -9,27 +9,35 @@ export default function ButtonPostReminder() {
 	const createReminder = async () => {
 		const dataRegex =
 			/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i;
-		if (!dataRegex.test(nameDate.date)) {
-			alert('A data deve estar no formato DD/MM/YYYY');
-			return;
-		}
 
 		try {
 			const reminder = await postAxios('/reminders', nameDate);
 
 			if (reminder.status === 400) {
-				alert('O lembrete deve ser uma data futura');
-			} else {
-                setDateName({
-                    name: '',
-                    date: '',
-                });
-    
-                setAllReminders([...allReminders, reminder]);
-                
-                return reminder;
-            }
+				if (!nameDate.name) {
+					alert('O lembrete deve ter um nome');
+				}
 
+				if (!nameDate.date) {
+					alert('O lembrete deve ter uma data');
+
+				} else if (!dataRegex.test(nameDate.date)) {
+					alert('A data deve estar no formato DD/MM/YYYY');
+					return;
+					
+				} else {
+					alert('A data deve estar no futuro');
+				}
+			} else {
+				setDateName({
+					name: '',
+					date: '',
+				});
+
+				setAllReminders([...allReminders, reminder]);
+
+				return reminder;
+			}
 		} catch (error) {
 			console.error('Erro ao enviar dados:', error.message);
 		}
@@ -39,7 +47,7 @@ export default function ButtonPostReminder() {
 		<button
 			type='button'
 			onClick={createReminder}>
-			Confirma
+			CRIAR
 		</button>
 	);
 }
