@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { useContext, useEffect, useState } from 'react';
 import Context from '../../context/Context';
+import deleteAxios from '../../services/deleteAxios';
 import getAxios from '../../services/getAxios';
 
 export default function ListAllReminders() {
@@ -11,6 +12,11 @@ export default function ListAllReminders() {
 		const formattedDate = moment(dateString, 'YYYY-MM-DD').format('DD/MM/YYYY');
 		return formattedDate;
 	}
+
+    const deleteReminders = async (id) => {
+        const deleteById = await deleteAxios('/reminders', id);
+        return deleteById;
+    }
 
 	useEffect(() => {
     const fetchReminders = async () => {
@@ -38,12 +44,16 @@ export default function ListAllReminders() {
 
 return (
     <div>
+        <h2>Lista de lembretes</h2>
         {Object.keys(groupedReminders).map((date) => (
             <div key={date}>
                 <p>{date}</p>
                 <ul>    
                     {groupedReminders[date].map((e) => (
-                        <li key={e.id}>{e.name}</li>
+                        <li key={e.id}>
+                            {e.name}
+                            <button type='button' onClick={() => deleteReminders(e.id)}>x</button>
+                        </li>
                     ))}
                 </ul>
             </div>
