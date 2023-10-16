@@ -1,8 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testa componente InputsReminder Testa se o estado name é atualizado corretamente 1`] = `
+exports[`Testa componente InputsReminder Testa se o estado é atualizado Date 1`] = `
 <div>
-   
+  <form>
+    <h1>
+      Novo Lembrete
+    </h1>
+    <div>
+      <label
+        for="name-box"
+      >
+        Nome
+      </label>
+      <input
+        id="name-box"
+        name="name"
+        placeholder="Nome do lembrete"
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        for="date-box"
+      >
+        Data
+      </label>
+      <input
+        id="date-box"
+        name="date"
+        placeholder="DD/MM/YYYY"
+        required=""
+        value=""
+      />
+    </div>
+    <button
+      type="button"
+    >
+      CRIAR
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Testa componente InputsReminder Testa se o estado é atualizado Name 1`] = `
+<div>
   <form>
     <h1>
       Novo Lembrete
