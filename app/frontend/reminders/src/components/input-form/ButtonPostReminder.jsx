@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import Context from '../../context/Context';
 import postAxios from '../../services/postAxios';
-
+import '../../style/buttonPostReminder.css';
 export default function ButtonPostReminder() {
 	const { nameDate, setDateName } = useContext(Context);
 	const { allReminders, setAllReminders } = useContext(Context);
@@ -46,7 +46,9 @@ export default function ButtonPostReminder() {
 	return (
 		<button
 			type='button'
-			onClick={createReminder}>
+			onClick={createReminder}
+			className='button-criar'
+			>
 			CRIAR
 		</button>
 	);

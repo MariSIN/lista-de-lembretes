@@ -1,0 +1,54 @@
+h2 {
+    font-size: 28px;
+    color: rgb(60, 107, 112);
+}
+
+.reminders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* padding-bottom: 40px; */
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.date {
+    color: rgb(74, 166, 157);
+    font-weight: 600;
+    font-size: 22px;
+    text-decoration: underline;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+}
+
+.list-container li {
+    display: flex;
+    align-items: center;
+    color:rgb(87, 127, 125);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    margin-left: 10px;
+    background-color: rgb(195, 39, 39);
+    font-size: 15px;
+    cursor: pointer;
+    color: white;
+    position: relative;
+}

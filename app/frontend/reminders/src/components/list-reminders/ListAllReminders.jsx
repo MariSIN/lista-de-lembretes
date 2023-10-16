@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import Context from '../../context/Context';
 import deleteAxios from '../../services/deleteAxios';
 import getAxios from '../../services/getAxios';
+import '../../style/listAllReminders.css';
 
 export default function ListAllReminders() {
 	const { allReminders, setAllReminders } = useContext(Context);
@@ -66,26 +67,26 @@ export default function ListAllReminders() {
 					? groupedReminders[formattedDate].push(reminder)
 					: (groupedReminders[formattedDate] = [reminder]);
 			}
-			//console.log(groupedReminders);
 			return groupedReminders;
 		};
 		fetchReminders();
 	}, [setAllReminders, allReminders]);
 
 	return (
-		<div>
+		<div className='reminders-container'>
 			<h2>Lista de lembretes</h2>
 			{Object.keys(groupedReminders).map((date) => (
-				<div key={date}>
-					<p>{date}</p>
-					<ul>
+				<div key={date} className='list'>
+					<p className='date'>{date}</p>
+					<ul className='list-container'>
 						{groupedReminders[date].map((e) => (
 							<li key={e.id}>
 								{e.name}
 								<button
 									type='button'
+									className='delete-button'
 									onClick={() => deleteReminders(e.id)}>
-									x
+									-
 								</button>
 							</li>
 						))}

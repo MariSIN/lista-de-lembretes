@@ -1,0 +1,27 @@
+.button-criar {
+    background-color: rgb(160,218,212);
+    width: 45%;
+    align-self: center;
+    height: 50px;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    box-shadow: 3px 3px 3px rgba(56, 68, 65, 0.361);
+    font-size: 17px;
+    font-weight: 600;
+    color: rgb(26, 69, 69);
+    transition: all 0.1s;
+    cursor: pointer;
+}
+
+.button-criar:hover {
+    transform: translate(2px, 2px);
+    transition: all 0.1s;
+}
+
+.button-criar:active {
+    background-color:  rgb(190, 234, 230);
+    color: rgb(26, 69, 69);
+    transition: all 0.1s;
+    box-shadow: 4px 4px 8px rgb(101, 170, 171);
+}
