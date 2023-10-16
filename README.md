@@ -90,4 +90,67 @@ docker container run --name todolist -e MYSQL_ROOT_PASSWORD=desafiodti -d -p 330
 | `id`      | `number` | **Obrigatório**. Id é um número inteiro |
 
 
+## Premissas Assumidas
+
+<details>
+  <summary>Adicionar Novo Lembrete</summary>
+
+  1. **Deve ser possível adicionar um novo lembrete:**
+     - **Rota POST /reminders:**
+       - Salvará os lembretes no Banco de Dados.
+       - Validação dos dados e tratamento de erro caso ocorram dados inválidos ou erro no servidor.
+     - **Validação de Dados:**
+       - O usuário deve fornecer um nome para o lembrete.
+       - O usuário deve fornecer uma data válida para o lembrete.
+       - A data informada para o lembrete deve estar no futuro.
+       - Status HTTP 400 será retornado para dados inválidos.
+       - Se o status for 400, um alerta será exibido com os erros do cliente.
+     - **Inputs Nome e Data:**
+       - O estado será utilizado para salvar o que foi descrito nos inputs.
+       - Função onChange será utilizada para atualizar o estado em tempo real.
+     - **Botão CRIAR:**
+       - Verificará os valores do estado antes de enviar para a rota POST.
+       - Enviará os dados para a rota POST /reminders e criará o lembrete.
+</details>
+
+<details>
+  <summary>Componentização</summary>
+  
+  2. **Componentização para separar responsabilidades:**
+      - `<InputsReminder />` para a lógica de salvamento dos dados dos inputs no estado.
+      - `<ButtonPostReminder />` para a lógica do botão que fará o POST na rota /reminders, utilizando o estado salvo com as informações dos inputs.
+      - `<ListAllReminders />` para a lógica de listagem das tarefas e também exclusão das mesmas.
+</details>
+
+
+<details><summary>Lembretes</summary>
+  
+   3. **Exibição de Lembretes:**
+      - **Rota GET /reminders:**
+        - Lista todos os lembretes criados.
+        - A lista de lembretes será salva no estado e exibida abaixo da descrição "Lista de Lembretes".
+      - **Lembretes exibidos por data:**
+        - Ao adicionar um novo lembrete, se a data já existir, o lembrete será exibido dentro da lista de lembretes referente a esse dia.
+        - A função "groupRemindersByDate" receberá uma matriz de lembretes, formatará suas datas e as agrupará em um objeto com as datas como chaves e os lembretes correspondentes como valores.
+      - **Lembretes organizados em ordem cronológica:**
+        - Quando o lembrete é criado ele será salvo no estado e já organizado em ordem cronológica, com a função sort.
+    
+</details>
+
+<details><summary>Deletar Lembretes</summary>
+  
+   4. **Deletar Lembretes:**
+       - Deve ser possível excluir um lembrete previamente adicionado.
+       - **Rota DELETE /reminders/:id :**
+         - Deletará um lembrete do banco de dados através do id.
+         - Os estados que armazenam os lembretes criados também serão modificados, resultando na exclusão dos lembretes dos estados.
+         - O id deve ser existente, se não for, retornará o status HTTP 404.
+       - **Botão de deletar:**
+         - O lembrete previamente criado será deletado através do id.
+         - Aparecerá ao lado de cada lembrete criado.
+         - Chamará a rota DELETE /reminders/:id e excluirá o lembrete do Banco de dados quando do estado (frontend).
+         - Para cada data, o lembrete com o ID fornecido será filtrado na matriz de lembretes associados a essa data. Se a matriz resultante estiver vazia, a data será removida do objeto "updatedGroupedReminders" usando o operador "delete".
+</details>
+
+
 
