@@ -92,7 +92,7 @@ A inclusão do backend com um banco de dados visa garantir a persistência e man
 * A aplicação irá rodar na porta http://localhost:3001
 3. O próximo passo é necessário ter o docker instalado na máquina. Rodar no terminal o seguinte código:
 ```js
-docker container run --name todolist -e MYSQL_ROOT_PASSWORD=desafiodti -d -p 3306:3306 mysql:8.0.29
+docker container run --name todolist -e MYSQL_ROOT_PASSWORD=listadeafazeres -d -p 3306:3306 mysql:8.0.29
 ```
 * O código acima vai criar um container para fazer a ligação com o banco de dados MySQL.
 
