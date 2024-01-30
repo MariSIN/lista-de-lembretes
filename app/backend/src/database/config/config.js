@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-// docker container run --name todolist -e MYSQL_ROOT_PASSWORD=desafiodti -d -p 3306:3306 mysql:8.0.29
+// docker container run --name todolist -e MYSQL_ROOT_PASSWORD=listadeafazeres -d -p 3306:3306 mysql:8.0.29
 
 const config = {
   username: process.env.MYSQL_USER || 'root',
