@@ -1,5 +1,5 @@
 
-# Desafio DTI DIGITAL
+# Lista de Lembretes
 Esta aplicação cria uma lista de Lembretes, sendo também possível deletá-los.
 
 ## Premissas Assumidas
